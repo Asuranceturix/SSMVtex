@@ -168,6 +168,5 @@ void Image::save(const std::string& _fileName){
     strcpy(name, _fileName.c_str());
 
     this->imageFile_.convertTo24Bits();
-    this->imageFile_.save(name);
-
+    this->imageFile_.save(name, JPEG_QUALITYSUPERB);
 }
