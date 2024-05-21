@@ -27,6 +27,7 @@
 #include <chrono>
 
 #include <opencv2/photo/photo.hpp>
+#include <opencv2/imgproc/types_c.h>
 
 #include "multitexturer.h"
 
@@ -1236,7 +1237,7 @@ bool Multitexturer::findFaceInImage(float& _face_min_x, float& _face_max_x, floa
     cv::resize( gray, smallImg, smallImg.size(), 0, 0, cv::INTER_LINEAR );
     cv::equalizeHist( smallImg, smallImg );
 
-    cascade.detectMultiScale( smallImg, faces, 1.1, 2, 0 | CV_HAAR_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
+    cascade.detectMultiScale( smallImg, faces, 1.1, 2, 0 | cv::CASCADE_FIND_BIGGEST_OBJECT, cv::Size(30, 30) );
 
     if (faces.empty()){
         return false;
